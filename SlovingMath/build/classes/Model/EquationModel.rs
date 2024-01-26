@@ -1,0 +1,2 @@
+model.EquationModel
+View.NewClass
