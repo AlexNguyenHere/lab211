@@ -1,0 +1,2 @@
+controller.ContactController
+Controller.NewClass
