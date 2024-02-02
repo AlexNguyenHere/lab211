@@ -1,0 +1,2 @@
+model.Doctor
+Model.NewClass

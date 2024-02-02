@@ -1,0 +1,2 @@
+view.DoctorView
+View.NewClass
