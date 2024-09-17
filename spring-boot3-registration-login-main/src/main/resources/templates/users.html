@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        .welcome-container {
+            display: flex;
+            align-items: center;
+        }
+        .welcome-text {
+            margin-right: 15px;
+        }
+        .welcome-gif {
+            width: 50px; /* Adjust as needed */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+         <img src="https://media.giphy.com/media/26ufplp8yheSKUE00/giphy.gif" alt="Welcome GIF" class="welcome-gif">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form th:action="@{/logout}" method="post" class="form-inline my-2 my-lg-0">
+                <div class="welcome-container">
+                    <p class="my-2 my-lg-0 welcome-text">
+                        Welcome <b><span sec:authentication="principal.fullName"></span></b>
+                    </p>
+                </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="text-center">List of Users</h1>	 
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>E-mail</th>
+                    <th>Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${listUsers}">
+                    <td th:text="${user.id}">User ID</td>
+                    <td th:text="${user.email}">E-mail</td>
+                    <td th:text="${user.firstName + ' ' + user.lastName}">Full Name</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
